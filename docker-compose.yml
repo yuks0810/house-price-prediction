@@ -1,10 +1,11 @@
 version: '3'
 services:
-  python3:
-    restart: always
-    build: .
-    container_name: 'python3'
-    working_dir: '/root/'
-    tty: true
+  app:
+    image: kaggle/python:latest
+    container_name: kaggle_container
     volumes:
-      - ./opt:/root/opt
+      - ./src:/work
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /work
